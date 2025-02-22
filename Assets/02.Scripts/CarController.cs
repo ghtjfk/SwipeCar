@@ -24,7 +24,7 @@ public class CarController : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && isMove.Equals(false))
         {
             Vector2 endPos = Input.mousePosition;   //메모리 최소화를 위해 endPos는 여기서 정의
-            float swipeLength = endPos.x - startPos.x;
+            float swipeLength = Mathf.Abs(endPos.x - startPos.x);
             moveSpeed = swipeLength / 1000f;
             isMove = true;
         }
@@ -34,6 +34,12 @@ public class CarController : MonoBehaviour
         if (moveSpeed < 0.01f)
         {
             moveSpeed = 0;
+        }
+
+        if(Input.GetMouseButtonDown(1) && moveSpeed == 0)
+        {
+            transform.position = new Vector3(-7f, -3.7f, 0);
+            isMove = false;
         }
     }
 }
