@@ -25,6 +25,9 @@ public class CarController : MonoBehaviour
         {
             Vector2 endPos = Input.mousePosition;   //메모리 최소화를 위해 endPos는 여기서 정의
             float swipeLength = Mathf.Abs(endPos.x - startPos.x);
+
+            GetComponent<AudioSource>().Play(); //자동차 효과음
+
             moveSpeed = swipeLength / 1000f;
             isMove = true;
         }
